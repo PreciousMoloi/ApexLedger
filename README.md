@@ -19,8 +19,11 @@ The database `apexledger_db` and all tables are **auto-created on first page loa
 |------|-------|----------|-----|
 | Client | thabo@example.com | Password123! | Off |
 | Client | zanele@example.com | Password123! | Off |
-| Staff Accountant | acc1@ntuli.co.za | Password123! | Off |
-| Staff Accountant | acc2@ntuli.co.za | Password123! | Off |
+| Staff Accountant (Taxation) | acc1@ntuli.co.za | Password123! | Off |
+| Staff Accountant (Payroll) | acc2@ntuli.co.za | Password123! | Off |
+| Staff Accountant (Bookkeeping) | acc3@ntuli.co.za | Password123! | Off |
+| Staff Accountant (Advisory) | acc4@ntuli.co.za | Password123! | Off |
+| Staff Accountant (Audit) | acc5@ntuli.co.za | Password123! | Off |
 | Admin | admin@ntuli.co.za | Password123! | **On** |
 | Manager | mgr@ntuli.co.za | Password123! | **On** |
 
@@ -63,6 +66,9 @@ ApexLedger/
 ```
 
 ### What changed in this revision
+
+- **Client queries now route directly to the responsible accountant — no admin approval step.** Each accountant owns one duty (`department`): Taxation, Bookkeeping, Payroll, Advisory, or Audit. When a client registers, they're assigned to the accountant who owns their chosen service. When a client starts a new message thread, they pick what the query is about and it's routed straight to that specialist (falling back to their assigned accountant for general queries). Admin can still reassign which accountant a client is paired with from the Admin Panel, but this is a staffing action, not a per‑query approval — Admin is never in the path of an individual query.
+- **Five duty-specialist accountants ship by default**: Priya Pillay (Taxation), Thabo Nkosi (Payroll), Nomvula Sithole (Bookkeeping), Karabo Molefe (Advisory), Lindiwe Zulu (Audit). Existing installs get the three new specialists patched in automatically on next page load.
 
 The interface was rebuilt to match the System Design mockups and the functional/non‑functional requirements in the project documentation:
 
